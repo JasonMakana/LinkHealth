@@ -13,6 +13,11 @@ return new class extends Migration
     {
         Schema::create('doctors', function (Blueprint $table) {
             $table->id();
+            $table->string('cedula')->uniqidue();
+            $table->string('name');
+            $table->string('apellido_P');
+            $table->string('apellido_M');
+            $table->string('especialidad');
             $table->timestamps();
         });
     }
