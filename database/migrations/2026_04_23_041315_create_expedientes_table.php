@@ -11,12 +11,10 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('pacientes', function (Blueprint $table) {
-            $table->id('id_paciente');
-            $table->string('nombre', 100);
-            $table->date('fecha_nacimiento')->nullable();
-            $table->string('sexo', 10)->nullable();
-            $table->string('telefono', 15)->nullable();
+        Schema::create('expedientes', function (Blueprint $table) {
+            $table->id('id_expediente');
+            $table->foreignId('id_paciente')->unique()->constrained('pacientes', 'id_paciente');
+            $table->text('historial')->nullable();
             $table->timestamps();
         });
     }
@@ -26,6 +24,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('pacientes');
+        Schema::dropIfExists('expedientes');
     }
 };

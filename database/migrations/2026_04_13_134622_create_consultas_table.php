@@ -8,9 +8,12 @@ return new class extends Migration
 {
     /**
      * Run the migrations.
+     * Esta no se esta utilizandon de momento,
+     * pero puede ser de utilidad luego
      */
     public function up(): void
     {
+        /*
         Schema::create('consultas', function (Blueprint $table) {
             $table->id();
             $table->foreignId('paciente_id')->constrained('pacientes')->onDelete('cascade');
@@ -20,6 +23,7 @@ return new class extends Migration
             $table->string('tipo');
             $table->timestamps();
         });
+        */
     }
 
     /**
