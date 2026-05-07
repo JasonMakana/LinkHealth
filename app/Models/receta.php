@@ -6,5 +6,11 @@ use Illuminate\Database\Eloquent\Model;
 
 class receta extends Model
 {
-    //
+    protected $primaryKey = 'id_receta';
+
+    public function cita()
+    {
+        // Una receta pertenece a una consulta específica
+        return $this->belongsTo(Cita::class, 'id_cita');
+    }
 }

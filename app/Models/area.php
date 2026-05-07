@@ -6,5 +6,9 @@ use Illuminate\Database\Eloquent\Model;
 
 class area extends Model
 {
-    //
+    protected $primaryKey = 'id_area';
+
+    public function citas() {
+        return $this->hasMany(Cita::class, 'id_area');
+    }
 }
