@@ -3,6 +3,9 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use App\Models\Expediente;
+use App\Models\Cita;
+use App\Models\Seguro;
 
 class Paciente extends Model
 {
