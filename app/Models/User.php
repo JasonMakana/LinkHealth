@@ -7,28 +7,27 @@ use Database\Factories\UserFactory;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
-use App\Models\Paciente;
 
 class User extends Authenticatable
 {
     /** @use HasFactory<UserFactory> */
     use HasFactory, Notifiable;
 
-    public function paciente()
-    {
-        return $this->hasOne(Paciente::class, 'user_id');
-    }
-
     /**
      * The attributes that are mass assignable.
      *
      * @var list<string>
      */
+
     protected $fillable = [
-        'name',
-        'email',
-        'password',
-    ];
+    'name',
+    'email',
+    'password',
+    'role',    // Nuevo campo
+    'nfc_id',  // Nuevo campo
+];
+
+
 
     /**
      * The attributes that should be hidden for serialization.
@@ -52,4 +51,10 @@ class User extends Authenticatable
             'password' => 'hashed',
         ];
     }
+
+    public function paciente()
+{
+    // Esto asume que la tabla de Jason tiene un campo user_id
+    return $this->hasOne(Paciente::class, 'user_id');
+}
 }

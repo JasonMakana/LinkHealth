@@ -4,7 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class cita_enfermera extends Model
+class CitaEnfermera extends Model
 {
     //
 }
