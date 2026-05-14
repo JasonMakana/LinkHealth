@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\cita;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class CitaController extends Controller
 {
@@ -12,7 +13,26 @@ class CitaController extends Controller
      */
     public function index()
     {
-        //
+        $user = Auth::user();
+
+        // 2. Accedemos al perfil de paciente de ese usuario
+        // Asumiendo que en tu modelo User tienes: public function paciente() { return $this->hasOne(Paciente::class); }
+        $paciente = $user->paciente;
+
+        if (!$paciente) {
+            return redirect()->back()->with('error', 'No tienes un perfil de paciente asociado.');
+        }
+
+        // 3. Obtenemos las citas del paciente con sus relaciones (doctor, área, etc.)
+        // Usamos 'with' para evitar el problema de consultas N+1
+        $citas = Cita::where('paciente_id', $paciente->id)
+            ->with(['doctor', 'area']) 
+            ->orderBy('fecha', 'asc')
+            ->orderBy('hora', 'asc')
+            ->get();
+
+        // 4. Retornamos la vista con los datos
+        return view('paciente.citas', compact('citas'));
     }
 
     /**

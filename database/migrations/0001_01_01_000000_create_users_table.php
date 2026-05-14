@@ -17,6 +17,7 @@ return new class extends Migration
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
+            $table->string('role')->default('paciente'); // Agregamos el campo 'role' con valor por defecto 'paciente'
             $table->rememberToken();
             $table->timestamps();
         });
