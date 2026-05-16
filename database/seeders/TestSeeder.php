@@ -17,10 +17,10 @@ class TestSeeder extends Seeder
      */
     public function run(): void
     {
-        // 1. Crear un área (necesaria para la cita)
+        // Creacion de un área de prueba
     $area = Area::create(['nombre' => 'Urgencias']);
 
-    // 2. Crear Usuario Doctor
+    // Creacion de Usuario Doctor
     $userDoc = User::create([
         'name' => 'Dr. Alexander',
         'email' => 'doctor@gmail.com',
@@ -28,22 +28,22 @@ class TestSeeder extends Seeder
         'role' => 'doctor'
     ]);
 
-    // 3. Crear Perfil de Doctor ligado al usuario
+    // Creacion de Perfil de Doctor ligado al usuario
     Doctor::create([
         'nombre' => 'Dr. Alexander',
         'especialidad' => 'Informática Médica',
         'user_id' => $userDoc->id
     ]);
 
-    // 4. Crear Usuario Paciente
+    // Crear Usuario Paciente
     $userPac = User::create([
         'name' => 'Juan Pérez',
         'email' => 'paciente@gmail.com',
         'password' => bcrypt('paciente123'),
         'role' => 'paciente'
     ]);
-/*
-    // 5. Crear Perfil de Paciente ligado al usuario
+
+    // Creacion de Perfil de Paciente ligado al usuario
     $paciente = Paciente::create([
         'nombre' => 'Juan Pérez',
         'user_id' => $userPac->id,
@@ -51,7 +51,7 @@ class TestSeeder extends Seeder
         'telefono' => '4491234567'
     ]);
 
-    // 6. Crear la Cita de prueba
+    // Creacion de la Cita de prueba
     Cita::create([
         'id_paciente' => $paciente->id_paciente,
         'id_doctor' => 1,
@@ -59,6 +59,22 @@ class TestSeeder extends Seeder
         'fecha' => now(),
         'motivo' => 'Paciente presenta fiebre alta tras escaneo de tarjeta NFC.'
     ]);
-    */
+
+    // Creacion de un segundo paciente para pruebas adicionales
+    $userPac = User::create([
+        'name' => 'Karla Macias',
+        'email' => 'paciente2@gmail.com',
+        'password' => bcrypt('paciente2123'),
+        'role' => 'paciente'
+    ]);
+
+    // Creacion de Perfil de Paciente ligado al usuario
+    $paciente = Paciente::create([
+        'nombre' => 'Karla Macias',
+        'user_id' => $userPac->id,
+        'nfc_uid' => '7ED72A07',
+        'telefono' => '4491234567'
+    ]);
+    
     }
 }
