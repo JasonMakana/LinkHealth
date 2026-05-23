@@ -14,17 +14,19 @@ class DeviceTestSeeder extends Seeder
     public function run(): void
     {
             Device::updateOrCreate(
+            
             // Criterio de búsqueda para evitar duplicados si lo corres más de una vez
-            /*['paciente_name' => 'Juan Perez', 'clinica_id' => '1'],
+            ['paciente_name' => 'Juan Perez', 'clinica_id' => '1'],
             // Datos que se van a insertar/actualizar
             [
                 'mac_address' => '80:B5:4E:C1:C1:A0',
-                'ssid'        => 'Docentes',//'iPhone de Pitosue',//'iPhone de David',//'Mega_2.4G_1243',
-                'password'    => 'DocAgs987-',//'josue2005',//'David124',//'2UPLrPg5',
+                'ssid'        => 'Armor22',//'Docentes',//'iPhone de Pitosue',//'iPhone de David',//'Mega_2.4G_1243',
+                'password'    => 'Lapapa123',//'DocAgs987-',//'josue2005',//'David124',//'2UPLrPg5',
                 'is_active'   => true,
             ]
-            */
+            
 
+            /*
             ['paciente_name' => 'Juan Perez', 'clinica_id' => '1'],
             // Datos que se van a insertar/actualizar
             [
@@ -33,6 +35,7 @@ class DeviceTestSeeder extends Seeder
                 'password'    => '2UPLrPg5',
                 'is_active'   => true,
             ]
+            */
         );
     }
 }
